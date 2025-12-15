@@ -1,0 +1,72 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block css %}<link rel="stylesheet" href="{% static 'shop/css/style.css' %}">{% endblock %}
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>{% block title %}SkyFront{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="album.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">SkyFront</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'product' %}">Product</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'orders' %}">My orders</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us</a>
+            </li>
+          </ul>
+          {% if request.user.is_authenticated %}
+          <a href="{% url 'detail_user' %}"><button class="btn btn-outline-primary my-2 my-sm-0 buttons">{{request.user}}</button></a>
+          {% else %}
+          <a href="{% url 'login' %}"><button class="btn btn-outline-primary my-2 my-sm-0 buttons" type="submit">Login</button></a>
+          <a href="{% url 'register' %}"><button class="btn btn-outline-success my-2 my-sm-0 buttons" type="submit">Sing up</button></a>
+          {% endif %}
+        </form>
+        </div>
+      </nav>
+
+
+      {% block content %}
+      <div class="info-home">
+        <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="bg-body-tertiary p-5 rounded">
+                <div class="col-sm-8 py-5 mx-auto text-center">
+                    <h1 class="display-5 fw-normal">The best military drones</h1>
+                    <p class="fs-5">Our store is a place where you can find ideal solutions for your military tasks and technical needs.
+                    </p>
+
+                    <a href="{% url 'product' %}"><button class="btn btn-success">Go to select the drone for you</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+  </body>
+</html>

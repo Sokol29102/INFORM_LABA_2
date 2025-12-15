@@ -1,0 +1,90 @@
+{% extends 'shop/index.html' %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'shop/css/style_detail.css' %}">{% endblock %}
+{% block title %}Drone{% endblock %}
+{% block content %}
+<div class="drone bg-dark">
+    <h1 class="drone-name">{{drone.name}}</h1>
+</div>
+<div class="drone-img">
+    <img src="{{drone.image.url}}" alt="">
+</div>
+
+<div class="main-text-drone">
+    <h2>Product description</h2>
+    <p class="text-muted">
+      {{drone.specifications}}  
+    </p>
+    <hr>
+    <div>
+        <p class="text-muted">Model: <b class="info-drone">{{drone.model}}</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Category: <b class="info-drone">{{drone.category}}</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Price: <b class="info-drone">{{drone.price}}$</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Quantity: <b class="info-drone">{{drone.quantity}}</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Manufacturer: <b class="info-drone">{{drone.manufacturer}}</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Battery: <b class="info-drone">{{drone.battery}}</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Connection: <b class="info-drone">{{drone.connection}}</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Maximum take off weight: <b class="info-drone">{{drone.maximum_take_off_weight}}</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Flight radius: <b class="info-drone">{{drone.flight_radius}} km</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Maximum flight time: <b class="info-drone">{{drone.maximum_flight_time}} minutes</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Cruising speed: <b class="info-drone">{{drone.cruising_speed}} km/h</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">ISO: <b class="info-drone">{{drone.iso}} km/h</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Focal Length: <b class="info-drone">{{drone.focal_length}} mm</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Field of view: <b class="info-drone">{{drone.field_of_view}}°</b></p>
+    </div>
+    <hr>
+    <div>
+        <p class="text-muted">Size of the image sensor: <b class="info-drone">{{drone.size_of_the_image_sensor}}</b></p>
+    </div>
+    <hr>
+</div>
+
+<div class="order-drone">
+    <h1 class="text-order">Order a drone</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-success button-order" type="submit">Create order</button>
+    </form>
+</div>
+
+{% endblock %}

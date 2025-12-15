@@ -1,0 +1,29 @@
+{% extends 'shop/index.html' %}
+{% load static %}
+{% block title %}My orders{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'client/css/style.css' %}">{% endblock %}
+{% block content %}
+<div class="user-orders">
+    <div class="container">
+        <div class="row">
+            {% for order in orders %}
+                <div class="col-md-4 mb-4">
+                    <div class="bg-light d-flex flex-column align-items-center">
+                        <h2>{{ order.drone }}</h2>
+                        <div class="d-flex justify-content-center mb-2">
+                            <img class="img-order" src="{{ order.drone.image.url }}" alt="">
+                        </div>
+                        <p>Order time: <span class="text-muted">{{ order.date }}</span></p>
+                        <p>Country: <span class="text-muted">{{ order.country }}</span></p>
+                        <p>City: <span class="text-muted">{{ order.city }}</span></p>
+                        <p>Address: <span class="text-muted">{{ order.address }}</span></p>
+                        <p>Phone number: <span class="text-muted">+{{ order.number_of_phone }}</span></p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

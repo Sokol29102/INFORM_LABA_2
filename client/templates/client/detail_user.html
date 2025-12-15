@@ -1,0 +1,23 @@
+{% extends 'shop/index.html' %}
+{% load static %}
+{% block title %}User{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'client/css/style.css' %}">{% endblock %}
+{% block content %}
+<div class="user-area">
+    <div class="card-account">
+        <div class="card-body p-4 p-sm-5">
+            <h1 class="card-title text-center mb-5 fw-light fs-5">Account</h1>
+        </div>
+        <div class="user-info">
+            <ul class="">
+                <label for="request-user">Username</label>
+                <input class="form-control input-info" id='request-user' type="" value="{{request.user}}" disabled>
+                <br>
+                <label for="request-user">Email</label>
+                <input class="form-control input-info" id='request-user' type="" value="{{request.user.email}}" disabled>
+            </ul>
+                <a class="logout" href="{% url 'logout' %}"><button class="btn btn-danger">Logout</button></a>
+        </div>
+    </div>    
+</div>
+{% endblock %}
